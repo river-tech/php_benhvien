@@ -1,0 +1,12 @@
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; }
+header { background: #1e88e5; color: #fff; padding: 20px; }
+header h1 { margin: 0; }
+nav a { color: #fff; margin-right: 15px; text-decoration: none; font-weight: bold; }
+main { padding: 20px; }
+form { background: #fff; padding: 20px; border-radius: 4px; margin-bottom: 20px; }
+input, select, textarea { width: 100%; padding: 8px; margin: 5px 0 15px; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th, td { padding: 10px; border: 1px solid #ddd; }
+button { background: #1e88e5; color: #fff; padding: 10px 15px; border: none; cursor: pointer; }
+.flash { background: #ffecb3; padding: 10px; margin-bottom: 15px; border: 1px solid #ffc107; }
+.welcome { margin: 5px 0 10px; }
