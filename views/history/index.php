@@ -1,14 +1,14 @@
 <section>
-    <h2>Vaccination History</h2>
+    <h2>Lịch sử tiêm chủng</h2>
     <table>
         <thead>
             <tr>
-                <th>Customer</th>
-                <th>Disease</th>
-                <th>Vaccine</th>
-                <th>Dose</th>
-                <th>Injected At</th>
-                <th>Next Schedule</th>
+                <th>Khách hàng</th>
+                <th>Bệnh</th>
+                <th>Vắc xin</th>
+                <th>Số mũi</th>
+                <th>Ngày tiêm</th>
+                <th>Lịch hẹn tiếp theo</th>
             </tr>
         </thead>
         <tbody>

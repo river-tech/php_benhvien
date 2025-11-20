@@ -17,7 +17,7 @@ class VaccineService
         VaccineDisease::sync($config, $id, $diseaseIds);
     }
 
-    public static function get(array $config, int $id): ?array
+    public static function get(array $config, string $id): ?array
     {
         $vaccine = Vaccine::find($config, $id);
         if ($vaccine) {
@@ -26,13 +26,13 @@ class VaccineService
         return $vaccine;
     }
 
-    public static function update(array $config, int $id, array $data, array $diseaseIds): void
+    public static function update(array $config, string $id, array $data, array $diseaseIds): void
     {
         Vaccine::update($config, $id, $data);
         VaccineDisease::sync($config, $id, $diseaseIds);
     }
 
-    public static function delete(array $config, int $id): void
+    public static function delete(array $config, string $id): void
     {
         VaccineDisease::sync($config, $id, []);
         Vaccine::delete($config, $id);

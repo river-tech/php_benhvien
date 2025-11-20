@@ -5,7 +5,10 @@ This project is a plain PHP MVC port of the original JSP/Servlet hospital vaccin
 ## Project Layout
 ```
 project/
-├── public/          # Front controller + assets
+├── css/             # Public styles
+├── js/              # Public scripts
+├── public/          # Backward-compatible stub (requires ../index.php)
+├── .htaccess        # Rewrite to root front controller
 ├── app/
 │   ├── core/        # Router, Controller base, DB helper, middleware
 │   ├── controllers/ # Feature controllers
@@ -36,10 +39,11 @@ Ensure these tables exist (column names can be adjusted but should match control
 Seed at least one admin record to access the system.
 
 ## Running Locally
-1. Copy the folder to `/Applications/MAMP/htdocs/baitap`.
-2. Update `config.php` if your base path differs (default assumes `/baitap`).
-3. Import database structure + seed data.
-4. Navigate to `http://localhost:8888/baitap/` and log in.
+1. Copy the folder to `/Applications/MAMP/htdocs/baitap` (or another web-root) **with the project root as the document root** (you no longer need `/public` in the URL).
+2. Ensure URL rewriting reaches `index.php` (Apache needs `mod_rewrite` and the included `.htaccess`; PHP built-in can use `php -S localhost:8888 -t . index.php`).
+3. Update `config.php` if your base path differs (default assumes `/baitap`; the front controller auto-detects and strips `/public` when needed).
+4. Import database structure + seed data.
+5. Navigate to `http://localhost:8888/baitap/login` and log in.
 
 ## Features
 - Authentication with sessions and middleware guard

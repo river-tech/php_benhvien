@@ -32,6 +32,13 @@ class Router
                 $path = '/';
             }
         }
+        // Accept legacy URLs that still include /public
+        if (str_starts_with($path, '/public')) {
+            $path = substr($path, strlen('/public'));
+            if ($path === '') {
+                $path = '/';
+            }
+        }
         foreach ($this->routes as $route) {
             $pattern = preg_replace('#\{[^/]+\}#', '([^/]+)', $route['path']);
             $pattern = '#^' . $pattern . '$#';

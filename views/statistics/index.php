@@ -1,10 +1,10 @@
 <section>
-    <h2>Cost Statistics</h2>
+    <h2>Thống kê chi phí</h2>
     <table>
         <thead>
             <tr>
-                <th>Customer</th>
-                <th>Total Cost</th>
+                <th>Khách hàng</th>
+                <th>Tổng chi</th>
             </tr>
         </thead>
         <tbody>

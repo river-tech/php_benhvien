@@ -8,23 +8,23 @@ $basePath = rtrim($basePath ?? '', '/');
 <html lang="en">
 <head data-base="<?= $basePath ?>">
     <meta charset="UTF-8">
-    <title>Hospital Management</title>
+    <title>Quản lý tiêm chủng</title>
     <link rel="stylesheet" href="<?= $basePath ?>/css/style.css">
     <script src="<?= $basePath ?>/js/vaccination.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Hospital Vaccination Management</h1>
+        <h1>Quản lý tiêm chủng bệnh viện</h1>
         <?php if (!empty($_SESSION['user'])): ?>
-            <p class="welcome">Welcome, <?= htmlspecialchars($_SESSION['user']['fullname'] ?? $_SESSION['user']['username']) ?></p>
+            <p class="welcome">Xin chào, <?= htmlspecialchars($_SESSION['user']['fullname'] ?? $_SESSION['user']['username']) ?></p>
             <nav>
-                <a href="<?= $basePath ?>/vaccines">Vaccines</a>
-                <a href="<?= $basePath ?>/diseases">Diseases</a>
-                <a href="<?= $basePath ?>/customers/register">Customers</a>
-                <a href="<?= $basePath ?>/vaccination/create">Vaccination</a>
-                <a href="<?= $basePath ?>/history">History</a>
-                <a href="<?= $basePath ?>/statistics">Statistics</a>
-                <a href="<?= $basePath ?>/logout">Logout</a>
+                <a href="<?= $basePath ?>/vaccines">Vắc xin</a>
+                <a href="<?= $basePath ?>/diseases">Bệnh</a>
+                <a href="<?= $basePath ?>/customers/register">Khách hàng</a>
+                <a href="<?= $basePath ?>/vaccination/create">Ghi nhận tiêm</a>
+                <a href="<?= $basePath ?>/history">Lịch sử</a>
+                <a href="<?= $basePath ?>/statistics">Thống kê</a>
+                <a href="<?= $basePath ?>/logout">Đăng xuất</a>
             </nav>
         <?php endif; ?>
     </header>

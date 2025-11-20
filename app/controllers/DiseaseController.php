@@ -16,13 +16,14 @@ class DiseaseController extends Controller
     public function store(): void
     {
         Disease::create($this->config, [
+            'id' => $_POST['id'] ?? '',
             'name' => $_POST['name'] ?? '',
             'description' => $_POST['description'] ?? '',
         ]);
         $this->redirect('/diseases');
     }
 
-    public function edit(int $id): void
+    public function edit(string $id): void
     {
         $disease = Disease::find($this->config, $id);
         if (!$disease) {
@@ -31,7 +32,7 @@ class DiseaseController extends Controller
         $this->render('disease/edit', compact('disease'));
     }
 
-    public function update(int $id): void
+    public function update(string $id): void
     {
         Disease::update($this->config, $id, [
             'name' => $_POST['name'] ?? '',
@@ -40,7 +41,7 @@ class DiseaseController extends Controller
         $this->redirect('/diseases');
     }
 
-    public function delete(int $id): void
+    public function delete(string $id): void
     {
         Disease::delete($this->config, $id);
         $this->redirect('/diseases');

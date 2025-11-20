@@ -8,11 +8,11 @@ class StatisticService
     public static function costPerCustomer(array $config): array
     {
         $pdo = DB::getConnection($config);
-        $sql = 'SELECT c.id, c.fullname, COALESCE(SUM(v.price), 0) AS total_cost
-                FROM customers c
-                LEFT JOIN vaccination_history vh ON vh.customer_id = c.id
-                LEFT JOIN vaccines v ON vh.vaccine_id = v.id
-                GROUP BY c.id, c.fullname
+        $sql = 'SELECT c.makh AS id, c.hotenkh AS fullname, COALESCE(SUM(v.giavacxin), 0) AS total_cost
+                FROM khachhang c
+                LEFT JOIN lichsutiemphong vh ON vh.makh = c.makh
+                LEFT JOIN vacxin v ON vh.mavacxin = v.mavacxin
+                GROUP BY c.makh, c.hotenkh
                 ORDER BY total_cost DESC';
         $stmt = $pdo->query($sql);
         return $stmt->fetchAll();

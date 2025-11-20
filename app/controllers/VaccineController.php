@@ -24,17 +24,19 @@ class VaccineController extends Controller
     public function store(): void
     {
         $data = [
+            'id' => $_POST['id'] ?? '',
             'name' => $_POST['name'] ?? '',
             'manufacturer' => $_POST['manufacturer'] ?? '',
-            'price' => $_POST['price'] ?? 0,
+            'price' => (int)($_POST['price'] ?? 0),
             'description' => $_POST['description'] ?? '',
+            'dose_count' => (int)($_POST['dose_count'] ?? 1),
         ];
         $diseaseIds = $_POST['diseases'] ?? [];
         VaccineService::create($this->config, $data, $diseaseIds);
         $this->redirect('/vaccines');
     }
 
-    public function edit(int $id): void
+    public function edit(string $id): void
     {
         $vaccine = VaccineService::get($this->config, $id);
         if (!$vaccine) {
@@ -44,20 +46,21 @@ class VaccineController extends Controller
         $this->render('vaccine/edit', compact('vaccine', 'diseases'));
     }
 
-    public function update(int $id): void
+    public function update(string $id): void
     {
         $data = [
             'name' => $_POST['name'] ?? '',
             'manufacturer' => $_POST['manufacturer'] ?? '',
-            'price' => $_POST['price'] ?? 0,
+            'price' => (int)($_POST['price'] ?? 0),
             'description' => $_POST['description'] ?? '',
+            'dose_count' => (int)($_POST['dose_count'] ?? 1),
         ];
         $diseaseIds = $_POST['diseases'] ?? [];
         VaccineService::update($this->config, $id, $data, $diseaseIds);
         $this->redirect('/vaccines');
     }
 
-    public function delete(int $id): void
+    public function delete(string $id): void
     {
         VaccineService::delete($this->config, $id);
         $this->redirect('/vaccines');

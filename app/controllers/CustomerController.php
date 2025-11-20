@@ -14,11 +14,12 @@ class CustomerController extends Controller
     public function register(): void
     {
         Customer::create($this->config, [
+            'id' => $_POST['id'] ?? '',
             'fullname' => $_POST['fullname'] ?? '',
             'phone' => $_POST['phone'] ?? '',
-            'email' => $_POST['email'] ?? '',
             'address' => $_POST['address'] ?? '',
             'dob' => $_POST['dob'] ?? null,
+            'gender' => $_POST['gender'] ?? null,
         ]);
         $this->redirect('/customers/register');
     }

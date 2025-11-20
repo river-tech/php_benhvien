@@ -20,24 +20,13 @@ class VaccinationService
         ];
     }
 
-    public static function vaccinesByDisease(array $config, int $diseaseId): array
+    public static function vaccinesByDisease(array $config, string $diseaseId): array
     {
         return VaccineDisease::getVaccinesByDisease($config, $diseaseId);
     }
 
     public static function register(array $config, array $data): void
     {
-        $pdo = DB::getConnection($config);
-        $stmt = $pdo->prepare('SELECT vaccine_id FROM vaccination_history WHERE customer_id = :customer AND disease_id = :disease LIMIT 1');
-        $stmt->execute([
-            'customer' => $data['customer_id'],
-            'disease' => $data['disease_id'],
-        ]);
-        $existing = $stmt->fetchColumn();
-        if ($existing && (int)$existing !== (int)$data['vaccine_id']) {
-            throw new RuntimeException('Customer already assigned a different vaccine for this disease.');
-        }
-
         $injectedAt = $data['injected_at'] ?: (new DateTime())->format('Y-m-d');
         $nextSchedule = $data['next_schedule_at'];
         if (!$nextSchedule) {
@@ -49,7 +38,6 @@ class VaccinationService
         VaccinationHistory::create($config, [
             'customer_id' => $data['customer_id'],
             'vaccine_id' => $data['vaccine_id'],
-            'disease_id' => $data['disease_id'],
             'dose_number' => $data['dose_number'],
             'injected_at' => $injectedAt,
             'next_schedule_at' => $nextSchedule,

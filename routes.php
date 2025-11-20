@@ -1,5 +1,6 @@
 <?php
 return [
+    ['GET', '/', ['AuthController', 'showLogin']],
     ['GET', '/login', ['AuthController', 'showLogin']],
     ['POST', '/login', ['AuthController', 'login']],
     ['GET', '/logout', ['AuthController', 'logout'], ['auth']],

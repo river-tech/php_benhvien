@@ -1,16 +1,20 @@
 <section>
-    <h2>Create Vaccine</h2>
+    <h2>Thêm vắc xin</h2>
     <form method="post" action="<?= $basePath ?>/vaccines">
-        <label>Name</label>
+        <label>Mã vắc xin</label>
+        <input type="text" name="id" required>
+        <label>Tên vắc xin</label>
         <input type="text" name="name" required>
-        <label>Manufacturer</label>
+        <label>Hãng sản xuất</label>
         <input type="text" name="manufacturer" required>
-        <label>Price</label>
-        <input type="number" step="0.01" name="price" required>
-        <label>Description</label>
+        <label>Giá (VND)</label>
+        <input type="number" step="1" name="price" required>
+        <label>Số mũi</label>
+        <input type="number" name="dose_count" min="1" value="1" required>
+        <label>Mô tả</label>
         <textarea name="description"></textarea>
         <fieldset>
-            <legend>Diseases</legend>
+            <legend>Phòng bệnh</legend>
             <?php foreach ($diseases as $disease): ?>
                 <label>
                     <input type="checkbox" name="diseases[]" value="<?= $disease['id'] ?>">
@@ -18,6 +22,6 @@
                 </label>
             <?php endforeach; ?>
         </fieldset>
-        <button type="submit">Save</button>
+        <button type="submit">Lưu</button>
     </form>
 </section>

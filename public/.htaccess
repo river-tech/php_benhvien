@@ -1,0 +1,4 @@
+# Minimal routing without mod_rewrite
+Options -Multiviews
+DirectoryIndex index.php
+FallbackResource /php_benhvien/index.php
